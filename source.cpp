@@ -124,8 +124,8 @@ int main( ) {
     g_memory = std::make_shared<c_memory>( "Discord.exe" );
     if ( !g_memory->valid( ) ) return 1;
 
-    uintptr_t base_addr = g_memory->base_address( ) + 0x0AEADCB8;
-    std::vector<uintptr_t> offsets = { 0x0, 0x20 };
+    uintptr_t base_addr = g_memory->base_address( ) + 0x0AEADCB8; // 0x0AEADCB8 is the pointer we got from the CE scan ( see imgur in readme )
+    std::vector<uintptr_t> offsets = { 0x0, 0x20 }; // the chain from the pointer scan ( see imgur in readme )
 
     uintptr_t string_addr = g_memory->resolve_pointer( base_addr , offsets );
     std::cout << "resolved string address: 0x" << std::hex << string_addr << "\n";
